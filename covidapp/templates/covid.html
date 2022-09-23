@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Search covid{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="text-center mt-5">Covid</h1>
+
+    <nav style="margin-left: 400px;" class="navbar navbar-light bg-light">
+        <div class="container">
+            <form action="/search/" class="d-flex" method="POST">
+                {% csrf_token %}
+                <input 
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Называния страна" aria-label="Search" 
+                name="country"
+                >
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h6>Подвержденный: {{confirmed}}</h6>
+    <h6>Умерли:  {{deaths}}</h6>
+    <h6>Страна: {{country}}</h6>
+    <h6>Населения: {{population}}</h6>
+
+    <!-- <pre>Топ 10: 
+        {% for i in lst %}
+        {% for y, e in i.items %}
+        Страна: {{y}} - Подвержденный: {{e}}
+        {% endfor %}
+        {% endfor %}
+    </pre> -->
+</div>
+
+{% endblock %}
